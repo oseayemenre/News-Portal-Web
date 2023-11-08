@@ -8,7 +8,7 @@ export const create_post = async (
   res: express.Response
 ) => {
   try {
-    const readTime = Math.floor(Math.random() * 6);
+    const readTime = Math.floor(1 + Math.random() * 5);
     const {
       postTitle,
       postDetails,
