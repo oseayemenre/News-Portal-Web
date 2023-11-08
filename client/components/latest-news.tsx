@@ -8,6 +8,7 @@ import Button from "./button";
 import { useRouter } from "next/navigation";
 import usePosts from "@/hooks/usePosts";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import Image from "next/image";
 
 type Titem = {
   postDetails: string;
@@ -21,6 +22,8 @@ const Latestnews = () => {
   const newsletter = "Latest Newsletter";
 
   const { posts: data, loading, error } = usePosts();
+
+  console.log(data);
 
   return (
     <section
@@ -90,22 +93,42 @@ const Latestnews = () => {
       {error && <h2 className='text-white'>Error</h2>}
 
       <div className='flex justify-between mb-16 items-start max-sm:flex-col max-sm:items-center max-sm:gap-y-6'>
-        {data?.map((items: Titem, i) => (
+        {loading === false && data.length < 1 ? (
           <motion.div
-            variants={latest_card}
-            initial='initial'
-            whileInView='animate'
-            custom={i}
-            key={i}
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.5,
+            }}
+            className='flex flex-col items-center w-full gap-y-4'
           >
-            <NewsCard
-              id={items?.id}
-              title={items?.postTitle}
-              image={items?.postImage}
-              details={items?.postDetails}
+            <Image
+              src='/no_posts.png'
+              width={300}
+              height={300}
+              alt=''
+              priority
             />
+            <div className='text-[24px] font-bold'>NO POSTS YET</div>
           </motion.div>
-        ))}
+        ) : (
+          data?.map((items: Titem, i) => (
+            <motion.div
+              variants={latest_card}
+              initial='initial'
+              whileInView='animate'
+              custom={i}
+              key={i}
+            >
+              <NewsCard
+                id={items?.id}
+                title={items?.postTitle}
+                image={items?.postImage}
+                details={items?.postDetails}
+              />
+            </motion.div>
+          ))
+        )}
       </div>
 
       <motion.div
