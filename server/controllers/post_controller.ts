@@ -181,3 +181,28 @@ export const get_post = async (req: express.Request, res: express.Response) => {
     }
   }
 };
+
+export const get_posts_home = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const posts = await prisma.posts.findMany({
+      take: 3,
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    return res.status(200).json({ posts: posts });
+  } catch (e: unknown) {
+    console.error("Error", e);
+    if (e instanceof Prisma.PrismaClientValidationError) {
+      return res.status(400).json({ message: "Validation error" });
+    }
+
+    if (typeof e === "string") {
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
+};

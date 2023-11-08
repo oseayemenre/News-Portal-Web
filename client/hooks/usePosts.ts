@@ -18,6 +18,7 @@ const usePosts = () => {
 
         setLoading(false);
       } catch (e: unknown) {
+        setLoading(false);
         setError(true);
         if (typeof e === "string") {
           console.log(e);

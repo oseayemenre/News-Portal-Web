@@ -7,7 +7,7 @@ import { latest_card, titleVariant } from "@/utils/motion";
 import Button from "./button";
 import { useRouter } from "next/navigation";
 import usePosts from "@/hooks/usePosts";
-import { AiOutlineLoading } from "react-icons/ai";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 type Titem = {
   postDetails: string;
@@ -85,9 +85,11 @@ const Latestnews = () => {
           }}
           className='flex items-center justify-center text-white mb-[100px]'
         >
-          <AiOutlineLoading size={64} />
+          <AiOutlineLoading3Quarters size={64} />
         </motion.div>
       )}
+
+      {error && <h2 className='text-white'>Error</h2>}
 
       <div className='flex justify-between mb-16 items-start max-sm:flex-col max-sm:items-center max-sm:gap-y-6'>
         {data.map((items: Titem, i) => (
