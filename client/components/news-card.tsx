@@ -10,9 +10,18 @@ type TNewsCard = {
   image: string;
   details: string;
   id: string;
+  readTime: string;
+  postCategory: string;
 };
 
-const NewsCard = ({ title, image, details, id }: TNewsCard) => {
+const NewsCard = ({
+  title,
+  image,
+  details,
+  id,
+  readTime,
+  postCategory,
+}: TNewsCard) => {
   const [fullCard, showFullCard] = useState(false);
 
   const newPostTitle = title;
@@ -33,9 +42,9 @@ const NewsCard = ({ title, image, details, id }: TNewsCard) => {
       <div className='p-6 w-[400px] bg-[#050c1c] max-sm:w-[300px] max-sm:text-center'>
         <div className='flex items-center gap-x-6 font-[600] text-[14px] mb-4 max-sm:flex-col max-sm:gap-y-4'>
           <div className='py-1 px-2 bg-[#c8500b] rounded-md'>
-            <p>Product Design Weekly</p>
+            <p>{postCategory}</p>
           </div>
-          <p>5 min read</p>
+          <p>${readTime} min read</p>
         </div>
         <p className='mb-2 text-[24px] font-[700]'>
           {postTitle.split("")[0].toUpperCase() + postTitle.slice(1)}

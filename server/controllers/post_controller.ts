@@ -8,10 +8,12 @@ export const create_post = async (
   res: express.Response
 ) => {
   try {
+    const readTime = Math.floor(Math.random() * 6);
     const {
       postTitle,
       postDetails,
       postImage,
+      postCategory,
       categoryId,
       adminId,
       subCategoryId,
@@ -29,6 +31,8 @@ export const create_post = async (
           postTitle,
           postDetails,
           postImage,
+          postCategory,
+          readTime,
           category: { connect: { id: categoryId } },
           admins: { connect: { id: adminId } },
           subCategory: { connect: { id: subCategoryId } },

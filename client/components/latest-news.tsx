@@ -15,6 +15,8 @@ type Titem = {
   postImage: string;
   postTitle: string;
   id: string;
+  readTime: string;
+  postCategory: string;
 };
 
 const Latestnews = () => {
@@ -123,6 +125,8 @@ const Latestnews = () => {
                 title={items?.postTitle}
                 image={items?.postImage}
                 details={items?.postDetails}
+                readTime={items?.readTime}
+                postCategory={items?.postCategory}
               />
             </motion.div>
           ))
