@@ -81,7 +81,7 @@ const Latestnews = () => {
           }}
           transition={{
             duration: 1,
-            yoyo: Infinity,
+            repeat: Infinity,
           }}
           className='flex items-center justify-center text-white mb-[100px]'
         >
