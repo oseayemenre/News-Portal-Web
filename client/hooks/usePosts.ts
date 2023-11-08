@@ -11,10 +11,10 @@ const usePosts = () => {
     const handleFetch = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:4000/api/posts/");
+        const response = await fetch("http://localhost:4000/api/posts/home");
         const data = await response.json();
 
-        setPosts(data.posts);
+        setPosts(data?.posts);
 
         setLoading(false);
       } catch (e: unknown) {
