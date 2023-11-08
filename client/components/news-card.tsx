@@ -2,14 +2,22 @@
 
 import React from "react";
 import Image from "next/image";
-import { AiOutlineArrowRight } from "react-icons/ai";
 import { useState } from "react";
 
-const NewsCard = () => {
-  const description =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. veniam aliquam facere explicabo? Ullam impedit nesciunt quas! Inventore iste temporibus alias doloribus, nam, repellat adipisci quae minus asperiores, enim accusantium rem!";
+type TNewsCard = {
+  title: string;
+  image: string;
+  details: string;
+};
 
+const NewsCard = ({ title, image, details }: TNewsCard) => {
   const [fullCard, showFullCard] = useState(false);
+
+  const newPostTitle = title;
+  const postTitle = newPostTitle.replace(/^\s+/, "");
+
+  const postDetails = details.replace(/^\s+/, "");
+  const Details = postDetails.split("")[0].toUpperCase() + postDetails.slice(1);
 
   return (
     <div>
@@ -28,25 +36,14 @@ const NewsCard = () => {
           <p>5 min read</p>
         </div>
         <p className='mb-2 text-[24px] font-[700]'>
-          A collection of daily UI challenges for your inspiration
+          {postTitle.split("")[0].toUpperCase() + postTitle.slice(1)}
         </p>
-        <p className='mb-6 ease duration-150'>
-          {fullCard ? description : `${description.slice(0, 75)}...`}
-        </p>
+        <p className='mb-6 ease duration-150'>{`${Details.slice(0, 75)}...`}</p>
         <div
           className='flex items-center gap-x-2 cursor-pointer focus:outline-none max-sm:justify-center'
           onClick={() => showFullCard(!fullCard)}
         >
-          <p className='text-[#c8500b]'>
-            {fullCard ? "Hide content" : "Read more"}
-          </p>
-          <div
-            className={`duration-500 ease ${
-              fullCard ? "-rotate-180" : "rotate-0"
-            }`}
-          >
-            <AiOutlineArrowRight size={12} color='white' />
-          </div>
+          <p className='text-[#c8500b]'>Read more</p>
         </div>
       </div>
     </div>

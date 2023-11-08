@@ -3,21 +3,35 @@
 import { useState, useEffect } from "react";
 
 const usePosts = () => {
-  const [data, setData] = useState([]);
-  const [loading, isLoading] = useState(false);
-  const [error, setError] = useState();
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const handleFetch = async () => {
-      const response = await fetch("http://localhost:4000/api/posts/");
-      const data = await response.json();
+      try {
+        setLoading(true);
+        const response = await fetch("http://localhost:4000/api/posts/");
+        const data = await response.json();
 
-      setData(data);
+        setPosts(data.posts);
+
+        setLoading(false);
+      } catch (e: unknown) {
+        setError(true);
+        if (typeof e === "string") {
+          console.log(e);
+        }
+
+        if (e instanceof Error) {
+          console.log(e.message);
+        }
+      }
     };
 
     handleFetch();
   }, []);
-  return { data, loading, error };
+  return { posts, loading, error };
 };
 
 export default usePosts;

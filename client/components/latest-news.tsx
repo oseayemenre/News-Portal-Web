@@ -6,11 +6,23 @@ import { motion } from "framer-motion";
 import { latest_card, titleVariant } from "@/utils/motion";
 import Button from "./button";
 import { useRouter } from "next/navigation";
+import usePosts from "@/hooks/usePosts";
+import { AiOutlineLoading } from "react-icons/ai";
+
+type Titem = {
+  postDetails: string;
+  postImage: string;
+  postTitle: string;
+};
 
 const Latestnews = () => {
   const router = useRouter();
   const count = [1, 2, 3];
   const newsletter = "Latest Newsletter";
+
+  const { posts: data, loading, error } = usePosts();
+
+  console.log(data);
 
   return (
     <section
@@ -62,8 +74,23 @@ const Latestnews = () => {
         </motion.p>
       </div>
 
+      {loading && (
+        <motion.div
+          animate={{
+            rotate: 360,
+          }}
+          transition={{
+            duration: 1,
+            yoyo: Infinity,
+          }}
+          className='flex items-center justify-center text-white mb-[100px]'
+        >
+          <AiOutlineLoading size={64} />
+        </motion.div>
+      )}
+
       <div className='flex justify-between mb-16 items-start max-sm:flex-col max-sm:items-center max-sm:gap-y-6'>
-        {count.map((items, i) => (
+        {data.map((items: Titem, i) => (
           <motion.div
             variants={latest_card}
             initial='initial'
@@ -71,7 +98,11 @@ const Latestnews = () => {
             custom={i}
             key={i}
           >
-            <NewsCard />
+            <NewsCard
+              title={items.postTitle}
+              image={items.postImage}
+              details={items.postDetails}
+            />
           </motion.div>
         ))}
       </div>
