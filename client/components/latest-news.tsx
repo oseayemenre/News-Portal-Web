@@ -13,16 +13,14 @@ type Titem = {
   postDetails: string;
   postImage: string;
   postTitle: string;
+  id: string;
 };
 
 const Latestnews = () => {
   const router = useRouter();
-  const count = [1, 2, 3];
   const newsletter = "Latest Newsletter";
 
   const { posts: data, loading, error } = usePosts();
-
-  console.log(data);
 
   return (
     <section
@@ -92,7 +90,7 @@ const Latestnews = () => {
       {error && <h2 className='text-white'>Error</h2>}
 
       <div className='flex justify-between mb-16 items-start max-sm:flex-col max-sm:items-center max-sm:gap-y-6'>
-        {data.map((items: Titem, i) => (
+        {data?.map((items: Titem, i) => (
           <motion.div
             variants={latest_card}
             initial='initial'
@@ -101,9 +99,10 @@ const Latestnews = () => {
             key={i}
           >
             <NewsCard
-              title={items.postTitle}
-              image={items.postImage}
-              details={items.postDetails}
+              id={items?.id}
+              title={items?.postTitle}
+              image={items?.postImage}
+              details={items?.postDetails}
             />
           </motion.div>
         ))}

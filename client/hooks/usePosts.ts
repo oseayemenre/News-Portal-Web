@@ -21,11 +21,11 @@ const usePosts = () => {
         setLoading(false);
         setError(true);
         if (typeof e === "string") {
-          console.log(e);
+          console.log("Internal server error");
         }
 
         if (e instanceof Error) {
-          console.log(e.message);
+          console.log("Error:", e.message);
         }
       }
     };

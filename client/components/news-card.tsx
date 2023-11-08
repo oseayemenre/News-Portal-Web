@@ -3,14 +3,16 @@
 import React from "react";
 import Image from "next/image";
 import { useState } from "react";
+import Link from "next/link";
 
 type TNewsCard = {
   title: string;
   image: string;
   details: string;
+  id: string;
 };
 
-const NewsCard = ({ title, image, details }: TNewsCard) => {
+const NewsCard = ({ title, image, details, id }: TNewsCard) => {
   const [fullCard, showFullCard] = useState(false);
 
   const newPostTitle = title;
@@ -43,7 +45,9 @@ const NewsCard = ({ title, image, details }: TNewsCard) => {
           className='flex items-center gap-x-2 cursor-pointer focus:outline-none max-sm:justify-center'
           onClick={() => showFullCard(!fullCard)}
         >
-          <p className='text-[#c8500b]'>Read more</p>
+          <Link href={id} className='text-[#c8500b]'>
+            Read more
+          </Link>
         </div>
       </div>
     </div>
