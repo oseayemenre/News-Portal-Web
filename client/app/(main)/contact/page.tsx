@@ -125,7 +125,7 @@ const ContactUs = () => {
             Contact Info
           </h2>
           <div className='flex gap-x-4 max-sm:gap-x-2 mt-12'>
-            <CiLocationOn size={24} color='white' className='max-sm:w-12' />
+            <CiLocationOn size={24} color='white' className='max-sm:w-14' />
             <p className='text-white text-[18px] max-sm:text-[14px]'>
               PMB 4003, ILISHAN REMO, OGUN STATE, NIGERIA
             </p>
