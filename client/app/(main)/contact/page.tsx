@@ -125,19 +125,19 @@ const ContactUs = () => {
             Contact Info
           </h2>
           <div className='flex gap-x-4 max-sm:gap-x-2 mt-12'>
-            <CiLocationOn size={24} color='white' className='max-sm:w-[64px]' />
+            <CiLocationOn size={24} color='white' />
             <p className='text-white text-[18px] max-sm:text-[14px]'>
               PMB 4003, ILISHAN REMO, OGUN STATE, NIGERIA
             </p>
           </div>
-          <div className='flex gap-x-4 max-sm:gap-x-1 mt-12 max-sm:-ml-3'>
-            <BiEnvelope size={24} color='white' className='max-sm:w-[64px]' />
-            <p className='text-white text-[18px] max-sm:text-[14px] -ml-[6px]'>
+          <div className='flex gap-x-4 max-sm:gap-x-2 mt-12'>
+            <BiEnvelope size={24} color='white' />
+            <p className='text-white text-[18px] max-sm:text-[14px]'>
               ABCDedfRoad@<span className='max-sm:block'>ABCD.com</span>
             </p>
           </div>
           <div className='flex gap-x-4 mt-12 mb-20 max-sm:gap-x-2'>
-            <FiPhoneCall size={24} color='white' className='max-sm: w-[18px]' />
+            <FiPhoneCall size={24} color='white' />
             <p className='text-white text-[18px] max-sm:text-[14px]'>
               123-456-789
             </p>
