@@ -130,7 +130,7 @@ const ContactUs = () => {
               PMB 4003, ILISHAN REMO, OGUN STATE, NIGERIA
             </p>
           </div>
-          <div className='flex gap-x-4 max-sm:gap-x-1 mt-12 max-sm:-ml-2'>
+          <div className='flex gap-x-4 max-sm:gap-x-1 mt-12 max-sm:-ml-[10px]'>
             <BiEnvelope size={24} color='white' className='max-sm:w-[64px]' />
             <p className='text-white text-[18px] max-sm:text-[14px] -ml-1'>
               ABCDedfRoad@<span className='max-sm:block'>ABCD.com</span>
