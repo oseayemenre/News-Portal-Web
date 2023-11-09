@@ -10,7 +10,7 @@ const Logo = () => {
 
   return (
     <div
-      className='flex gap-4 cursor-pointer items-center text-[25px] font-[700]'
+      className='flex gap-4 cursor-pointer items-center text-[25px] font-[700] max-sm:text-[18px]'
       onClick={() => router.push("/")}
     >
       <Logo_image />
