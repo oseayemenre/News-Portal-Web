@@ -23,7 +23,7 @@ const LatestNews = () => {
         ))}
       </h2>
 
-      <section className='py-[80px] px-[200px] text-black'>
+      <section className='py-[80px] px-[200px] max-sm:px-8 text-black'>
         <div className='flex bg-zinc-300 justify-between pl-6 pr-3 py-3 rounded-[100px] '>
           <input
             placeholder='Search for something...'
