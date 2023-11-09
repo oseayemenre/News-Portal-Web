@@ -12,7 +12,7 @@ const Mobilenav = () => {
       transition={{
         type: "tween",
       }}
-      className='absolute top-[70px] right-4 flex flex-col items-end gap-y-4 bg-black bg-opacity-70 text-white shadow-lg px-12 py-4'
+      className='absolute top-[70px] right-4 flex flex-col items-end gap-y-4 bg-black bg-opacity-70 text-white shadow-lg px-12 py-4 z-50'
     >
       {navitems.map((items, i) => (
         <Link key={i} href={items.link} className='cursor-pointer'>
