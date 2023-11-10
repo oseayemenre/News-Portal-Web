@@ -44,7 +44,7 @@ const NewsCard = ({
           <div className='py-1 px-2 bg-[#c8500b] rounded-md'>
             <p>{postCategory}</p>
           </div>
-          <p>${readTime} min read</p>
+          <p>{readTime} min read</p>
         </div>
         <p className='mb-2 text-[24px] font-[700]'>
           {postTitle.split("")[0].toUpperCase() + postTitle.slice(1)}
