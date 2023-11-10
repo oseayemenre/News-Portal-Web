@@ -23,7 +23,7 @@ const Latestnews = () => {
   const router = useRouter();
   const newsletter = "Latest Newsletter";
 
-  const { posts: data, loading, error } = usePosts();
+  const { posts: data, loading } = usePosts();
 
   return (
     <section
@@ -89,8 +89,6 @@ const Latestnews = () => {
           <AiOutlineLoading3Quarters size={64} />
         </motion.div>
       )}
-
-      {error && <h2 className='text-white'>Error</h2>}
 
       <div className='flex justify-between mb-16 items-start max-sm:flex-col max-sm:items-center max-sm:gap-y-6'>
         {loading === false && data.length < 1 ? (

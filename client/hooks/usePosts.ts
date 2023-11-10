@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 const usePosts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
 
   useEffect(() => {
     const handleFetch = async () => {
@@ -19,7 +18,6 @@ const usePosts = () => {
         setLoading(false);
       } catch (e: unknown) {
         setLoading(false);
-        setError(true);
         if (typeof e === "string") {
           console.log("Internal server error");
         }
@@ -32,7 +30,7 @@ const usePosts = () => {
 
     handleFetch();
   }, []);
-  return { posts, loading, error };
+  return { posts, loading };
 };
 
 export default usePosts;

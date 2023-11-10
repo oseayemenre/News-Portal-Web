@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 
 const usePost = (id: string) => {
   const [data, setData] = useState([]);
-  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -15,8 +14,7 @@ const usePost = (id: string) => {
         const post = await response.json();
         setData(post);
         setLoading(false);
-      } catch (e) {
-        setError(true);
+      } catch (e: unknown) {
         if (e instanceof Error) {
           console.log("Error: ", e.message);
         }
@@ -29,7 +27,7 @@ const usePost = (id: string) => {
 
     handleFetch();
   }, []);
-  return { data, error, loading };
+  return { data, loading };
 };
 
 export default usePost;
