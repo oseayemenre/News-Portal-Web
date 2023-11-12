@@ -47,7 +47,11 @@ const NewsCard = ({
           <p>{readTime} min read</p>
         </div>
         <p className='mb-2 text-[24px] font-[700]'>
-          {postTitle.split("")[0].toUpperCase() + postTitle.slice(1)}
+          {postTitle.length < 26
+            ? postTitle.split("")[0].toUpperCase() + postTitle.slice(1)
+            : `${
+                postTitle.split("")[0].toUpperCase() + postTitle.slice(1, 25)
+              }...`}
         </p>
         <p className='mb-6 ease duration-150'>{`${Details.slice(0, 75)}...`}</p>
         <div

@@ -57,6 +57,7 @@ model Posts {
   adminId       String      @db.ObjectId
   categoryId    String      @db.ObjectId
   subCategoryId String      @db.ObjectId
+  bgColor       String
   comments      Comments[]
   category      Category    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   admins        Admins      @relation(fields: [adminId], references: [id], onDelete: Cascade)

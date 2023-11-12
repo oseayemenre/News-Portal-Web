@@ -2,6 +2,11 @@ import express from "express";
 import { Prisma, PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
+const colors = ["blue", "red", "purple", "green", "orange"] as const;
+
+const random = Math.floor(Math.random() * colors.length);
+
+const randomColor = colors[random];
 
 export const create_post = async (
   req: express.Request,
@@ -33,6 +38,7 @@ export const create_post = async (
           postImage,
           postCategory,
           readTime,
+          bgColor: randomColor,
           category: { connect: { id: categoryId } },
           admins: { connect: { id: adminId } },
           subCategory: { connect: { id: subCategoryId } },
