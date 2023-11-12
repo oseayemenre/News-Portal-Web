@@ -1,0 +1,59 @@
+import React, { useState, useEffect } from "react";
+import { colors } from "@/utils/data";
+
+type TPosts = {
+  id: string;
+  postCategory: string;
+  postDetails: string;
+  postImage: string;
+  postTitle: string;
+  readTime: string;
+};
+
+type Posts = {
+  posts: TPosts[];
+};
+
+const MainPostCard = () => {
+  const [post, setPost] = useState<TPosts[]>([]);
+  const random = Math.floor(Math.random() * colors.length);
+  const randomColor = colors[random];
+
+  useEffect(() => {
+    const handleFetch = async () => {
+      const res = await fetch("http://localhost:4000/api/posts");
+      const data: Posts = await res.json();
+      setPost(data.posts);
+    };
+
+    handleFetch();
+  }, []);
+
+  const removespace = post[0]?.postTitle.replace(/^\s+/, "");
+  const Title = removespace?.split("")[0].toUpperCase() + removespace?.slice(1);
+
+  return (
+    <div className='bg-[url("/card-image.png")] bg-no-repeat bg-cover h-[300px] p-3 relative rounded-md cursor-pointer mb-20'>
+      <div className='flex flex-start'>
+        <div className={`bg-${randomColor}-700 py-1 px-3 rounded-md`}>
+          <p className='text-white font-bold text-[16px] text-center'>
+            {post[0]?.postCategory}
+          </p>
+        </div>
+      </div>
+
+      {Title.length > 50 ? (
+        <p className='absolute top-[140px] text-white text-[48px] font-bold'>{`${Title.slice(
+          0,
+          50
+        )}...`}</p>
+      ) : (
+        <p className='absolute top-[180px] text-white text-[48px] font-bold'>
+          {Title}
+        </p>
+      )}
+    </div>
+  );
+};
+
+export default MainPostCard;

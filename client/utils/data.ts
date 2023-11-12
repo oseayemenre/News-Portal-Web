@@ -71,3 +71,5 @@ export const footer_bottom = [
   "Terms of Service",
   "Cookies Settings",
 ] as const;
+
+export const colors = ["blue", "red", "purple", "green", "orange"] as const;

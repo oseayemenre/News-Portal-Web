@@ -6,6 +6,7 @@ import { titleVariant } from "@/utils/motion";
 import { AiOutlineLoading3Quarters, AiOutlineSearch } from "react-icons/ai";
 import LatestNewsCard from "@/components/latest_news_card";
 import { useState } from "react";
+import MainPostCard from "@/components/main-post-card";
 
 type TPosts = {
   id: string;
@@ -61,6 +62,25 @@ const LatestNews = () => {
     };
   };
 
+  const Search = async () => {
+    const handleFetch = async () => {
+      const res = await fetch("http://localhost:4000/api/posts");
+      data = await res.json();
+      FilteredData();
+    };
+
+    handleFetch();
+
+    const FilteredData = () => {
+      setPosts({ posts: [] });
+      const filteredData = data?.posts.filter((posts) =>
+        posts.postTitle.toLowerCase().includes(query)
+      );
+      console.log(filteredData);
+      setFilteredPosts(filteredData);
+    };
+  };
+
   return (
     <main>
       <h2 className='text-[40px] font-[700] p-20 bg-[#050c1c] text-center text-white'>
@@ -77,7 +97,8 @@ const LatestNews = () => {
         ))}
       </h2>
 
-      <section className='py-[80px] px-[200px] max-sm:px-8 text-black'>
+      <section className='py-10 px-[200px] max-sm:px-8 text-black'>
+        <MainPostCard />
         <form
           onSubmit={handleSearch}
           className='flex bg-zinc-300 justify-between pl-6 pr-3 py-3 rounded-[100px] '
@@ -92,6 +113,7 @@ const LatestNews = () => {
           <motion.button
             whileTap={{ scale: 0.8 }}
             className='bg-white p-2 rounded-full focus:outline-none'
+            onClick={Search}
           >
             <AiOutlineSearch size={24} color='#c8500b' />
           </motion.button>
@@ -112,17 +134,31 @@ const LatestNews = () => {
         )}
 
         {posts && (
-          <div className='grid grid-cols-2 gap-6'>
-            {posts?.posts.map((items: TPosts, i) => (
-              <LatestNewsCard key={i} title={items.postTitle} />
+          <div className='grid grid-cols-4 gap-6 mt-12'>
+            {posts?.posts.slice(1).map((items: TPosts, i) => (
+              <LatestNewsCard
+                key={i}
+                title={items.postTitle}
+                image={items.postImage}
+                details={items.postDetails}
+                category={items.postCategory}
+                time={items.readTime}
+              />
             ))}
           </div>
         )}
 
-        {filteredPosts.length > 0 && (
-          <div className='grid grid-cols-2 gap-6'>
+        {filteredPosts.slice(1).length > 0 && (
+          <div className='grid grid-cols-4 gap-6'>
             {filteredPosts?.map((items: TPosts, i) => (
-              <LatestNewsCard key={i} title={items.postTitle} />
+              <LatestNewsCard
+                key={i}
+                title={items.postTitle}
+                image={items.postImage}
+                details={items.postDetails}
+                category={items.postCategory}
+                time={items.readTime}
+              />
             ))}
           </div>
         )}

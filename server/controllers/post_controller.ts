@@ -143,7 +143,11 @@ export const get_posts = async (
   res: express.Response
 ) => {
   try {
-    const posts = await prisma.posts.findMany();
+    const posts = await prisma.posts.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
     return res.status(200).json({ posts: posts });
   } catch (e: unknown) {
     console.error("Error:", e);
