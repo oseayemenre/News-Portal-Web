@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { titleVariant } from "@/utils/motion";
 import { AiOutlineLoading3Quarters, AiOutlineSearch } from "react-icons/ai";
-import useAllPosts from "@/hooks/useAllPosts";
 import LatestNewsCard from "@/components/latest_news_card";
 import { useState } from "react";
 
@@ -17,27 +16,51 @@ type TPosts = {
   readTime: string;
 };
 
+type Posts = {
+  posts: TPosts[];
+};
+
 const LatestNews = () => {
   const title = "Latest News";
 
-  const { posts: data, loading } = useAllPosts();
+  const [posts, setPosts] = useState<Posts>({ posts: [] });
   const [query, setQuery] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState<TPosts[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const [filteredPosts, setFilteredPosts] = useState<TPosts[]>(data);
+  let data: Posts;
 
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("http://localhost:4000/api/posts");
+      const data: Posts = await res.json();
+      setLoading(false);
+      setPosts(data);
+    };
+
+    fetchData();
+  }, []);
+
+  const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const handleFetch = async () => {
+      const res = await fetch("http://localhost:4000/api/posts");
+      data = await res.json();
+      FilteredData();
+    };
 
-    if (query.length > 0) {
-      setFilteredPosts(
-        data?.filter((items: TPosts) => items.postTitle.includes(query))
+    handleFetch();
+
+    const FilteredData = () => {
+      setPosts({ posts: [] });
+      const filteredData = data?.posts.filter((posts) =>
+        posts.postTitle.toLowerCase().includes(query)
       );
-    } else {
-      setFilteredPosts(data);
-    }
+      console.log(filteredData);
+      setFilteredPosts(filteredData);
+    };
   };
 
-  console.log(filteredPosts);
   return (
     <main>
       <h2 className='text-[40px] font-[700] p-20 bg-[#050c1c] text-center text-white'>
@@ -88,15 +111,25 @@ const LatestNews = () => {
           </motion.div>
         )}
 
-        {filteredPosts.length > 1 ? (
+        {posts && (
+          <div className='grid grid-cols-2 gap-6'>
+            {posts?.posts.map((items: TPosts, i) => (
+              <LatestNewsCard key={i} title={items.postTitle} />
+            ))}
+          </div>
+        )}
+
+        {filteredPosts.length > 0 && (
           <div className='grid grid-cols-2 gap-6'>
             {filteredPosts?.map((items: TPosts, i) => (
               <LatestNewsCard key={i} title={items.postTitle} />
             ))}
           </div>
-        ) : (
-          <h2>No Posts Found</h2>
         )}
+
+        {posts?.posts.length < 1 &&
+          filteredPosts.length < 1 &&
+          loading === false && <h2>No Posts</h2>}
       </section>
     </main>
   );
