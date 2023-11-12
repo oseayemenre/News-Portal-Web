@@ -10,7 +10,7 @@ type Tparams = {
 };
 
 const DynamicRoute = ({ params }: Tparams) => {
-  const { data, error, loading } = usePost(params.id);
+  const { data, loading } = usePost(params.id);
 
   console.log(data);
 
