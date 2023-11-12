@@ -2,8 +2,19 @@
 
 import { useState, useEffect } from "react";
 
+type Posts = {
+  post: {
+    id: string;
+    postCategory: string;
+    postDetails: string;
+    postImage: string;
+    postTitle: string;
+    readTime: number;
+  };
+};
+
 const usePost = (id: string) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Posts>();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {

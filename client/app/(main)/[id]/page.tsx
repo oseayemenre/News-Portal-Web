@@ -9,12 +9,30 @@ type Tparams = {
   };
 };
 
+type TPosts = {
+  id: string;
+  postCategory: string;
+  postDetails: string;
+  postImage: string;
+  postTitle: string;
+  readTime: number;
+};
+
 const DynamicRoute = ({ params }: Tparams) => {
   const { data, loading } = usePost(params.id);
 
-  console.log(data);
+  console.log(data?.post?.postCategory);
 
-  return <div>{params.id}</div>;
+  return (
+    <div>
+      <p>{data?.post?.postTitle}</p>
+      <p>{data?.post?.postDetails}</p>
+      <p>{data?.post?.postImage}</p>
+      <p>{data?.post?.postCategory}</p>
+      <p>{data?.post?.readTime}</p>
+      <p></p>
+    </div>
+  );
 };
 
 export default DynamicRoute;

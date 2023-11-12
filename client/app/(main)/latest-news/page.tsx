@@ -15,6 +15,7 @@ type TPosts = {
   postImage: string;
   postTitle: string;
   readTime: string;
+  bgColor: string;
 };
 
 type Posts = {
@@ -134,30 +135,30 @@ const LatestNews = () => {
         )}
 
         {posts && (
-          <div className='grid grid-cols-4 gap-6 mt-12'>
-            {posts?.posts.slice(1).map((items: TPosts, i) => (
+          <div className='grid grid-cols-4 gap-6 mt-12 max-sm:grid-cols-2'>
+            {posts?.posts.map((items: TPosts, i) => (
               <LatestNewsCard
                 key={i}
                 title={items.postTitle}
                 image={items.postImage}
-                details={items.postDetails}
                 category={items.postCategory}
-                time={items.readTime}
+                link={items.id}
+                bgColor={items.bgColor}
               />
             ))}
           </div>
         )}
 
-        {filteredPosts.slice(1).length > 0 && (
-          <div className='grid grid-cols-4 gap-6'>
+        {filteredPosts.length > 0 && (
+          <div className='grid grid-cols-4 gap-6 max-sm:grid-cols-2'>
             {filteredPosts?.map((items: TPosts, i) => (
               <LatestNewsCard
                 key={i}
                 title={items.postTitle}
                 image={items.postImage}
-                details={items.postDetails}
                 category={items.postCategory}
-                time={items.readTime}
+                link={items.id}
+                bgColor={items.bgColor}
               />
             ))}
           </div>
