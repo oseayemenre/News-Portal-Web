@@ -20,14 +20,9 @@ export const navitems = [
 export const buttonitems = [
   {
     value: "Login",
-    bgcolor: "transparent",
-    border: "#c8500b",
-    push: "/login",
-  },
-  {
-    value: "Subscribe",
     bgcolor: "#c8500b",
-    textcolor: "white",
+    push: "/login",
+    textColor: "white",
   },
 ] as const;
 
