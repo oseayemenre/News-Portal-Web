@@ -8,8 +8,8 @@ const Logo_image = () => {
         xmlns='http://www.w3.org/2000/svg'
         version='1.1'
         viewBox='0 0 64 64'
-        width='64px'
-        height='64px'
+        width='48px'
+        height='48px'
         fill='#000000'
         transform='matrix(1, 0, 0, 1, 0, 0)'
       >

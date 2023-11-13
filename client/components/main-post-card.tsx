@@ -30,18 +30,16 @@ const MainPostCard = () => {
     handleFetch();
   }, []);
 
-  const removespace = String(
-    post[0]?.postTitle === "undefined"
-      ? ""
-      : post[0]?.postTitle.replace(/^\s+/, "")
-  );
-  const Title = removespace?.split("")[0].toUpperCase() + removespace?.slice(1);
+  const firstPostTitle = post.length > 0 ? post[0]?.postTitle : "";
+  const removespace = firstPostTitle ? firstPostTitle.replace(/^\s+/, "") : "";
+  const Title =
+    removespace && removespace.length > 0
+      ? removespace.charAt(0).toUpperCase() + removespace.slice(1)
+      : "";
 
   return (
     <div>
-      <Link
-        href={String(typeof post[0]?.id === "undefined" ? "" : post[0]?.id)}
-      >
+      <Link href={post[0] && post[0].id ? post[0].id : ""}>
         <div className='bg-[url("/card-image.png")] bg-no-repeat bg-cover h-[300px] p-3 relative rounded-md cursor-pointer mb-20'>
           <div className='flex flex-start'>
             <div

@@ -24,14 +24,14 @@ const DynamicRoute = ({ params }: Tparams) => {
   console.log(data?.post?.postCategory);
 
   return (
-    <div>
+    <main className='h-screen'>
       <p>{data?.post?.postTitle}</p>
       <p>{data?.post?.postDetails}</p>
       <p>{data?.post?.postImage}</p>
       <p>{data?.post?.postCategory}</p>
       <p>{data?.post?.readTime}</p>
       <p></p>
-    </div>
+    </main>
   );
 };
 

@@ -3,9 +3,13 @@ import { Inter } from "next/font/google";
 import { useRouter } from "next/navigation";
 import Logo_image from "@/components/logo_image";
 
+type TLogo = {
+  textColor?: string;
+};
+
 const inter = Inter({ subsets: ["latin"] });
 
-const Logo = () => {
+const Logo = ({ textColor }: TLogo) => {
   const router = useRouter();
 
   return (
@@ -14,7 +18,9 @@ const Logo = () => {
       onClick={() => router.push("/")}
     >
       <Logo_image />
-      <p className='text-slate-200'>News Portal</p>
+      <p className={textColor ? `text-[${textColor}]` : `text-slate-200`}>
+        News Portal
+      </p>
     </div>
   );
 };
