@@ -3,7 +3,11 @@ import { prismadb } from "@/utils/prismadb";
 
 export const GET = async (req: NextRequest) => {
   try {
-    const category = await prismadb.category.findMany();
+    const category = await prismadb.category.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
     return NextResponse.json(
       { categories: category, success: true },

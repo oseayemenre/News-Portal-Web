@@ -34,7 +34,7 @@ const LatestNews = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("http://localhost:4000/api/posts");
+      const res = await fetch("/api/posts");
       const data: Posts = await res.json();
       setLoading(false);
       setPosts(data);
@@ -46,7 +46,7 @@ const LatestNews = () => {
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const handleFetch = async () => {
-      const res = await fetch("http://localhost:4000/api/posts");
+      const res = await fetch("/api/posts");
       data = await res.json();
       FilteredData();
     };
@@ -65,7 +65,7 @@ const LatestNews = () => {
 
   const Search = async () => {
     const handleFetch = async () => {
-      const res = await fetch("http://localhost:4000/api/posts");
+      const res = await fetch("/api/posts");
       data = await res.json();
       FilteredData();
     };

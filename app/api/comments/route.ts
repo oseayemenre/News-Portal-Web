@@ -3,7 +3,11 @@ import { prismadb } from "@/utils/prismadb";
 
 export const GET = async (req: NextRequest) => {
   try {
-    const comments = await prismadb.comments.findMany();
+    const comments = await prismadb.comments.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
     return NextResponse.json(
       { comments: comments, success: true },

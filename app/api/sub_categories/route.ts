@@ -3,7 +3,11 @@ import { prismadb } from "@/utils/prismadb";
 
 export const GET = async (req: NextRequest) => {
   try {
-    const subCategory = await prismadb.subCategory.findMany();
+    const subCategory = await prismadb.subCategory.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
     return NextResponse.json(
       { sub_categories: subCategory, success: true },

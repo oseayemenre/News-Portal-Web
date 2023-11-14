@@ -21,7 +21,7 @@ const usePost = (id: string) => {
     const handleFetch = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:4000/api/posts/${id}`);
+        const response = await fetch(`/posts/${id}`);
         const post = await response.json();
         setData(post);
         setLoading(false);
