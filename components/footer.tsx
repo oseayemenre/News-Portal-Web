@@ -61,7 +61,7 @@ const Footer = () => {
               className='w-3/4 p-3 max-sm:w-full focus:outline-none bg-[#e5e7eb] text-black rounded-md'
             />
             <Button
-              {...buttonitems[1]}
+              {...buttonitems}
               type='submit'
               submit={handleSubmit(onSubmit)}
             />
