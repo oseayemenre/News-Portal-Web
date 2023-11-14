@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 type ButtonProps = {
-  value: string;
-  bgcolor: string;
+  value?: string;
+  bgcolor?: string;
   textcolor?: "white" | string;
   border?: string;
   type?: "submit";
