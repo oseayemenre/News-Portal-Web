@@ -8,7 +8,7 @@ export const GET = async (
   try {
     const { id } = params;
 
-    const subcategory = await prismadb.subcategory.findUnique({
+    const subcategory = await prismadb.subCategory.findUnique({
       where: {
         id,
       },
