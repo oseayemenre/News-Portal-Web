@@ -72,7 +72,7 @@ const Hero = () => {
             placeholder='Enter your email'
           />
           <Button
-            {...buttonitems[1]}
+            {...buttonitems}
             type='submit'
             submit={handleSubmit(onSubmit)}
           />
