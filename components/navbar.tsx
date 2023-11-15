@@ -10,8 +10,7 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Mobilenav from "./mobilenav";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
-import { signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 const Navbar = () => {
   const [showMobile, setShowMobile] = useState(false);

@@ -3,8 +3,10 @@ import { motion } from "framer-motion";
 import { navitems, buttonitems } from "@/utils/data";
 import Button from "./button";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
 
 const Mobilenav = () => {
+  const { data: session } = useSession();
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
@@ -21,9 +23,19 @@ const Mobilenav = () => {
       ))}
 
       <div className='flex flex-col gap-y-3 items-end'>
-        {buttonitems.map((items, i) => (
-          <Button key={i} {...items} />
-        ))}
+        {session?.user ? (
+          <div className='flex gap-x-4 items-center'>
+            <p>Profile</p>
+            <Button
+              value='Sign Out'
+              bgcolor={buttonitems.bgcolor}
+              textcolor={buttonitems.textColor}
+              submit={() => signOut()}
+            />
+          </div>
+        ) : (
+          <Button {...buttonitems} />
+        )}
       </div>
     </motion.div>
   );
