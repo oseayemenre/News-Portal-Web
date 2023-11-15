@@ -30,6 +30,11 @@ const NewsCard = ({
   const postDetails = details.replace(/^\s+/, "");
   const Details = postDetails.split("")[0].toUpperCase() + postDetails.slice(1);
 
+  const removespacecategory = postCategory.replace(/^\s+/, "");
+  const category =
+    removespacecategory.split("")[0].toUpperCase() +
+    removespacecategory.slice(1);
+
   return (
     <div>
       <Image
@@ -42,7 +47,7 @@ const NewsCard = ({
       <div className='p-6 w-[400px] bg-[#050c1c] max-sm:w-[300px] max-sm:text-center'>
         <div className='flex items-center gap-x-6 font-[600] text-[14px] mb-4 max-sm:flex-col max-sm:gap-y-4'>
           <div className='py-1 px-2 bg-[#c8500b] rounded-md'>
-            <p>{postCategory}</p>
+            <p>{category}</p>
           </div>
           <p>{readTime} min read</p>
         </div>
