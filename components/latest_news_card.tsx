@@ -18,14 +18,17 @@ const LatestNewsCard = ({
 }: TLatestNewsCard) => {
   const removespace = title.replace(/^\s+/, "");
   const Title = removespace.split("")[0].toUpperCase() + removespace.slice(1);
-
+  const removespacecategory = category.replace(/^\s+/, "");
+  const Category =
+    removespacecategory.split("")[0].toUpperCase() +
+    removespacecategory.slice(1);
   return (
     <Link href={link}>
       <div className='bg-[url("/card-image.png")] bg-cover h-[200px] p-3 relative rounded-md cursor-pointer hover:scale-90 duration-150 trnasition'>
         <div className='flex flex-start'>
           <div className={`bg-${bgColor}-700 py-1 px-3 rounded-md`}>
             <p className='text-white font-bold text-[12px] text-center'>
-              {category}
+              {Category}
             </p>
           </div>
         </div>
