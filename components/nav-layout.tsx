@@ -10,11 +10,13 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Mobilenav from "./mobilenav";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
 
 const NavLayout = () => {
   const [showMobile, setShowMobile] = useState(false);
   const [dropDown, setDropDown] = useState(false);
   const pathname = usePathname();
+  const { data: session } = useSession();
 
   return (
     <nav
@@ -67,10 +69,20 @@ const NavLayout = () => {
 
       {showMobile && <Mobilenav />}
 
-      <div className='flex gap-x-4 max-sm:hidden items-center'>
-        {buttonitems.map((items, i) => (
-          <Button key={i} {...items} />
-        ))}
+      <div className='flex max-sm:hidden items-center'>
+        {session?.user ? (
+          <div className='flex gap-x-4 items-center'>
+            <p>Profile</p>
+            <Button
+              value='Sign Out'
+              bgcolor={buttonitems.bgcolor}
+              textcolor={buttonitems.textColor}
+              submit={() => signOut()}
+            />
+          </div>
+        ) : (
+          <Button {...buttonitems} />
+        )}
       </div>
     </nav>
   );

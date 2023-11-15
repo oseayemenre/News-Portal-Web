@@ -15,7 +15,6 @@ type TPosts = {
   postImage: string;
   postTitle: string;
   readTime: string;
-  bgColor: string;
 };
 
 type Posts = {

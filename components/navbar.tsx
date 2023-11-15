@@ -9,12 +9,15 @@ import { motion } from "framer-motion";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Mobilenav from "./mobilenav";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 const Navbar = () => {
   const [showMobile, setShowMobile] = useState(false);
   const [dropDown, setDropDown] = useState(false);
   const pathname = usePathname();
+  const { data: session } = useSession();
 
   return (
     <motion.nav
@@ -72,10 +75,20 @@ const Navbar = () => {
 
       {showMobile && <Mobilenav />}
 
-      <div className='flex gap-x-4 max-sm:hidden items-center'>
-        {buttonitems.map((items, i) => (
-          <Button key={i} {...items} />
-        ))}
+      <div className='flex max-sm:hidden items-center'>
+        {session?.user ? (
+          <div className='flex gap-x-4 items-center'>
+            <p>Profile</p>
+            <Button
+              value='Sign Out'
+              bgcolor={buttonitems.bgcolor}
+              textcolor={buttonitems.textColor}
+              submit={() => signOut()}
+            />
+          </div>
+        ) : (
+          <Button {...buttonitems} />
+        )}
       </div>
     </motion.nav>
   );

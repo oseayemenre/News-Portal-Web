@@ -17,14 +17,12 @@ export const navitems = [
   },
 ] as const;
 
-export const buttonitems = [
-  {
-    value: "Login",
-    bgcolor: "#c8500b",
-    push: "/login",
-    textColor: "white",
-  },
-] as const;
+export const buttonitems = {
+  value: "Login",
+  bgcolor: "#c8500b",
+  push: "/login",
+  textColor: "white",
+};
 
 export const footer_about = [
   "Popular",
