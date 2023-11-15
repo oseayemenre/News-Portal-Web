@@ -29,7 +29,7 @@ const Button = ({
   return (
     <div>
       <motion.button
-        onClick={push ? () => router.push("/login") : submit}
+        onClick={push ? () => router.push("/profile") : submit}
         type={type}
         whileTap={{ scale: 0.8 }}
         className={`px-6 py-2 bg-[${bgcolor}] border-[2px] w-full border-solid ${
