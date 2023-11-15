@@ -181,7 +181,7 @@ const Login = () => {
         </div>
       </div>
 
-      <div className='bg-[url("/blue-pattern.jpg")] bg-cover w-1/3 flex flex-col px-12 justify-center items-center'>
+      <div className='bg-[url("/blue-paper.jpg")] bg-cover w-1/3 flex flex-col px-12 justify-center items-center'>
         <h1 className='font-[700] text-[48px] text-white mb-4 text-center'>
           {variant ? "Already Have An Account?" : "New Here?"}
         </h1>
