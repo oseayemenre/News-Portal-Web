@@ -30,8 +30,31 @@ const Login = () => {
     },
   });
 
-  const handleRegister = (values: z.infer<typeof formSchema>) => {
-    console.log("Registered");
+  const handleRegister = async (values: z.infer<typeof formSchema>) => {
+    try {
+      const res = await fetch("/api/auth/sign-up", {
+        method: "POST",
+        body: JSON.stringify({
+          username: values.username,
+          email: values.email,
+          password: values.password,
+        }),
+      });
+
+      if (res.ok) {
+        setVariant(false);
+      }
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        console.error("Error", e.message);
+      }
+
+      if (typeof e === "string") {
+        console.error(e);
+      }
+
+      console.log("Internal server error");
+    }
   };
 
   const submit = async (values: z.infer<typeof formSchema>) => {

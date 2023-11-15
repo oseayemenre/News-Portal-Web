@@ -26,8 +26,6 @@ const Button = ({
 }: ButtonProps) => {
   const router = useRouter();
 
-  console.log(bgColor);
-
   return (
     <div>
       <motion.button
