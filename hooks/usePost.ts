@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 type Posts = {
-  post: {
+  posts: {
     id: string;
     postCategory: string;
     postDetails: string;

@@ -9,27 +9,18 @@ type Tparams = {
   };
 };
 
-type TPosts = {
-  id: string;
-  postCategory: string;
-  postDetails: string;
-  postImage: string;
-  postTitle: string;
-  readTime: number;
-};
-
 const DynamicRoute = ({ params }: Tparams) => {
   const { data, loading } = usePost(params.id);
 
-  console.log(data?.post?.postCategory);
+  console.log(data);
 
   return (
     <main className='h-screen'>
-      <p>{data?.post?.postTitle}</p>
-      <p>{data?.post?.postDetails}</p>
-      <p>{data?.post?.postImage}</p>
-      <p>{data?.post?.postCategory}</p>
-      <p>{data?.post?.readTime}</p>
+      <p>{data?.posts?.postTitle}</p>
+      <p>{data?.posts?.postDetails}</p>
+      <p>{data?.posts?.postImage}</p>
+      <p>{data?.posts?.postCategory}</p>
+      <p>{data?.posts?.readTime}</p>
       <p></p>
     </main>
   );
