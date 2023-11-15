@@ -22,9 +22,9 @@ const Mobilenav = () => {
         </Link>
       ))}
 
-      <div className='flex flex-col gap-y-3 items-end'>
+      <React.Fragment>
         {session?.user ? (
-          <div className='flex gap-x-4 items-center'>
+          <div className='flex flex-col gap-y-3 items-end'>
             <p>Profile</p>
             <Button
               value='Sign Out'
@@ -36,7 +36,7 @@ const Mobilenav = () => {
         ) : (
           <Button {...buttonitems} />
         )}
-      </div>
+      </React.Fragment>
     </motion.div>
   );
 };

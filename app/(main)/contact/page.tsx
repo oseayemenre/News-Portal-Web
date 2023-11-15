@@ -108,7 +108,9 @@ const ContactUs = () => {
               placeholder='Write your message here...'
             />
 
-            <Button value='Send' bgcolor='#c8500b' textcolor='white' />
+            <div className='max-sm:w-4/5'>
+              <Button value='Send' bgcolor='#c8500b' textcolor='white' />
+            </div>
           </div>
         </motion.div>
 
