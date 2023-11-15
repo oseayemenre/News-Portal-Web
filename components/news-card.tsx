@@ -1,8 +1,5 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
-import { useState } from "react";
 import Link from "next/link";
 
 type TNewsCard = {
@@ -22,8 +19,6 @@ const NewsCard = ({
   readTime,
   postCategory,
 }: TNewsCard) => {
-  const [fullCard, showFullCard] = useState(false);
-
   const newPostTitle = title;
   const postTitle = newPostTitle.replace(/^\s+/, "");
 
@@ -58,15 +53,14 @@ const NewsCard = ({
                 postTitle.split("")[0].toUpperCase() + postTitle.slice(1, 25)
               }...`}
         </p>
-        <p className='mb-6 ease duration-150'>{`${Details.slice(0, 75)}...`}</p>
-        <div
-          className='flex items-center gap-x-2 cursor-pointer focus:outline-none max-sm:justify-center'
-          onClick={() => showFullCard(!fullCard)}
-        >
-          <Link href={id} className='text-[#c8500b]'>
-            Read more
-          </Link>
-        </div>
+        <p
+          className={`${
+            Details.length > 74 ? "mb-6" : "mb-12"
+          } ease duration-150`}
+        >{`${Details.slice(0, 75)}...`}</p>
+        <Link href={id} className='text-[#c8500b]'>
+          Read more
+        </Link>
       </div>
     </div>
   );
