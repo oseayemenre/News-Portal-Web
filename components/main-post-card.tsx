@@ -22,7 +22,7 @@ const MainPostCard = () => {
 
   useEffect(() => {
     const handleFetch = async () => {
-      const res = await fetch("http://localhost:4000/api/posts");
+      const res = await fetch("/api/posts");
       const data: Posts = await res.json();
       setPost(data.posts);
     };

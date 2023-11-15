@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 type ButtonProps = {
   value: string;
-  bgcolor: string;
+  bgColor: string;
   textcolor?: "white" | string;
   border?: string;
   type?: "submit";
@@ -17,7 +17,7 @@ type ButtonProps = {
 
 const Button = ({
   value,
-  bgcolor,
+  bgColor,
   textcolor,
   border,
   push,
@@ -26,13 +26,15 @@ const Button = ({
 }: ButtonProps) => {
   const router = useRouter();
 
+  console.log(bgColor);
+
   return (
     <div>
       <motion.button
         onClick={push ? () => router.push("/login") : submit}
         type={type}
         whileTap={{ scale: 0.8 }}
-        className={`px-6 py-[10px] bg-[${bgcolor}] border-[2px] w-full border-solid ${
+        className={`px-6 py-[10px] bg-[${bgColor}] border-[2px] w-full border-solid ${
           border ? `border-[${border}]` : "border-transparent"
         } rounded-[4rem] text-${textcolor} focus:outline-none text-[14px] font-bold`}
       >

@@ -25,6 +25,8 @@ const Latestnews = () => {
 
   const { posts: data, loading } = usePosts();
 
+  console.log(data);
+
   return (
     <section
       className='px-[64px] py-[122px] text-white relative z-10'
@@ -91,7 +93,7 @@ const Latestnews = () => {
       )}
 
       <div className='flex justify-between mb-16 items-start max-sm:flex-col max-sm:items-center max-sm:gap-y-6'>
-        {loading === false && data.length < 1 ? (
+        {loading === false && data?.length < 1 ? (
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}

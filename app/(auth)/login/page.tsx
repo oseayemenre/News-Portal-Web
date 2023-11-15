@@ -11,21 +11,28 @@ import { signIn } from "next-auth/react";
 import * as z from "zod";
 import { useRouter } from "next/navigation";
 
+export const formSchema = z.object({
+  username: z.string().min(1).max(20),
+  email: z.string().email().min(1).max(20),
+  password: z.string().min(1),
+});
+
 const Login = () => {
   const [toggle, setToggle] = useState(false);
+  const [variant, setVariant] = useState(false);
   const router = useRouter();
-
-  const formSchema = z.object({
-    email: z.string().email().min(1).max(20),
-    password: z.string().min(1),
-  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
+      username: "",
       email: "",
       password: "",
     },
   });
+
+  const handleRegister = (values: z.infer<typeof formSchema>) => {
+    console.log("Registered");
+  };
 
   const submit = async (values: z.infer<typeof formSchema>) => {
     try {
@@ -60,31 +67,49 @@ const Login = () => {
         </div>
         <div className='px-20 flex flex-col justify-center items-center h-screen'>
           <h1 className='font-[700] text-[48px] text-gray-800'>
-            Login to Your Account
+            {variant ? "Sign Up" : "Login to Your Account"}
           </h1>
           <p className='text-[20px] mb-6 text-gray-800'>
-            Login using social networks
+            {variant ? "Create an account" : "Login using social networks"}
           </p>
-          <div className='flex gap-x-4 mb-6'>
-            <div className='w-12 h-12 rounded-full bg-[#3b5998] cursor-pointer flex justify-center items-center'>
-              <FaFacebookF size={24} color='white' />
-            </div>
 
-            <div className='w-12 h-12 rounded-full bg-[#0072b1] cursor-pointer flex justify-center items-center'>
-              <FaLinkedinIn size={24} color='white' />
-            </div>
+          {variant ? (
+            ""
+          ) : (
+            <div className='flex gap-x-4 mb-6'>
+              <div className='w-12 h-12 rounded-full bg-[#3b5998] cursor-pointer flex justify-center items-center'>
+                <FaFacebookF size={24} color='white' />
+              </div>
 
-            <div className='w-12 h-12 rounded-full bg-[#26a7de] flex cursor-pointer justify-center items-center'>
-              <BsTwitter size={24} color='white' />
+              <div className='w-12 h-12 rounded-full bg-[#0072b1] cursor-pointer flex justify-center items-center'>
+                <FaLinkedinIn size={24} color='white' />
+              </div>
+
+              <div className='w-12 h-12 rounded-full bg-[#26a7de] flex cursor-pointer justify-center items-center'>
+                <BsTwitter size={24} color='white' />
+              </div>
             </div>
-          </div>
+          )}
 
           <div className='w-3/4'>
-            <div className='flex w-full items-center gap-x-2 mb-3'>
-              <div className='border-b-[1px] w-full border-b-slate-200' />
-              <p className='text-[14px]'>OR</p>
-              <div className='border-b-[1px] w-full border-b-slate-200' />
-            </div>
+            {variant ? (
+              ""
+            ) : (
+              <div className='flex w-full items-center gap-x-2 mb-3'>
+                <div className='border-b-[1px] w-full border-b-slate-200' />
+                <p className='text-[14px]'>OR</p>
+                <div className='border-b-[1px] w-full border-b-slate-200' />
+              </div>
+            )}
+
+            {variant && (
+              <input
+                {...form.register("username")}
+                type='email'
+                className='w-full bg-gray-200 focus:outline-none p-4 rounded-2xl mb-5 text-[14px]'
+                placeholder='Username'
+              />
+            )}
 
             <input
               {...form.register("email")}
@@ -119,10 +144,14 @@ const Login = () => {
             </div>
             <div className='w-2/5 mx-auto mb-8'>
               <Button
-                value='Sign Up'
-                bgcolor='#063e76'
+                value={variant ? "Register" : "Login"}
+                bgColor='#063e76'
                 textcolor='white'
-                submit={form.handleSubmit(submit)}
+                submit={
+                  variant
+                    ? form.handleSubmit(handleRegister)
+                    : form.handleSubmit(submit)
+                }
               />
             </div>
           </div>
@@ -130,13 +159,22 @@ const Login = () => {
       </div>
 
       <div className='bg-[url("/blue-pattern.jpg")] bg-cover w-1/3 flex flex-col px-12 justify-center items-center'>
-        <h1 className='font-[700] text-[48px] text-white mb-4'>New Here?</h1>
+        <h1 className='font-[700] text-[48px] text-white mb-4 text-center'>
+          {variant ? "Already Have An Account?" : "New Here?"}
+        </h1>
         <p className='text-[18px] text-white text-center mb-8'>
-          Sign up and be part of the team that publishes and edits the news!
+          {variant
+            ? ""
+            : "Sign up and be part of the team that publishes and edits the news!"}
         </p>
 
         <div className='w-3/5'>
-          <Button value='Sign Up' bgcolor='#ffffff' textcolor='black' />
+          <Button
+            value={variant ? "Login" : "Sign Up"}
+            bgColor='#ffffff'
+            textcolor='black'
+            submit={() => setVariant(!variant)}
+          />
         </div>
       </div>
     </main>

@@ -10,7 +10,7 @@ const usePosts = () => {
     const handleFetch = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/posts/home");
+        const response = await fetch("/api/posts/home");
         const data = await response.json();
 
         setPosts(data?.posts);
