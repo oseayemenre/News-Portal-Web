@@ -11,16 +11,16 @@ import { signIn } from "next-auth/react";
 import * as z from "zod";
 import { useRouter } from "next/navigation";
 
-export const formSchema = z.object({
-  username: z.string().min(1).max(20),
-  email: z.string().email().min(1).max(20),
-  password: z.string().min(1),
-});
-
 const Login = () => {
   const [toggle, setToggle] = useState(false);
   const [variant, setVariant] = useState(false);
   const router = useRouter();
+
+  const formSchema = z.object({
+    username: z.string().min(1).max(20),
+    email: z.string().email().min(1).max(20),
+    password: z.string().min(1),
+  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
