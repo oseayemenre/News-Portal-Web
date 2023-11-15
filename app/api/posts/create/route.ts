@@ -1,12 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prismadb } from "@/utils/prismadb";
 
-const colors = ["blue", "red", "purple", "green", "orange"] as const;
-
-const random = Math.floor(Math.random() * colors.length);
-
-const randomColor = colors[random];
-
 export const POST = async (req: NextRequest) => {
   try {
     const readTime = Math.floor(1 + Math.random() * 5);
@@ -35,7 +29,6 @@ export const POST = async (req: NextRequest) => {
           postImage,
           postCategory,
           readTime,
-          bgColor: randomColor,
           category: { connect: { id: categoryId } },
           admins: { connect: { id: adminId } },
           subCategory: { connect: { id: subCategoryId } },

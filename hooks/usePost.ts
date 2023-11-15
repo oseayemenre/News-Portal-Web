@@ -14,14 +14,14 @@ type Posts = {
 };
 
 const usePost = (id: string) => {
-  const [data, setData] = useState<Posts>();
+  const [data, setData] = useState<Posts | undefined>();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const handleFetch = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/posts/${id}`);
+        const response = await fetch(`/api/posts/${id}`);
         const post = await response.json();
         setData(post);
         setLoading(false);
@@ -37,7 +37,7 @@ const usePost = (id: string) => {
     };
 
     handleFetch();
-  }, []);
+  }, [id]);
   return { data, loading };
 };
 

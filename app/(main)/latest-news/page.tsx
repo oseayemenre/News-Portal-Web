@@ -136,31 +136,54 @@ const LatestNews = () => {
 
         {posts && (
           <div className='grid grid-cols-4 gap-6 mt-12 max-sm:grid-cols-2'>
-            {posts?.posts.map((items: TPosts, i) => (
-              <LatestNewsCard
-                key={i}
-                title={items.postTitle}
-                image={items.postImage}
-                category={items.postCategory}
-                link={items.id}
-                bgColor={items.bgColor}
-              />
-            ))}
+            {posts?.posts.map((items: TPosts, i) => {
+              const handleColor = (): string => {
+                if (items.postCategory === "female") {
+                  return "red";
+                } else if (items.postCategory === "Politics") {
+                  return "blue";
+                }
+
+                return "green";
+              };
+              return (
+                <LatestNewsCard
+                  key={i}
+                  title={items.postTitle}
+                  image={items.postImage}
+                  category={items.postCategory}
+                  link={items.id}
+                  bgColor={handleColor}
+                />
+              );
+            })}
           </div>
         )}
 
         {filteredPosts.length > 0 && (
           <div className='grid grid-cols-4 gap-6 max-sm:grid-cols-2'>
-            {filteredPosts?.map((items: TPosts, i) => (
-              <LatestNewsCard
-                key={i}
-                title={items.postTitle}
-                image={items.postImage}
-                category={items.postCategory}
-                link={items.id}
-                bgColor={items.bgColor}
-              />
-            ))}
+            {filteredPosts?.map((items: TPosts, i) => {
+              const handleColor = (): string => {
+                if (items.postCategory === "female") {
+                  return "red";
+                } else if (items.postCategory === "Politics") {
+                  return "blue";
+                }
+
+                return "green";
+              };
+
+              return (
+                <LatestNewsCard
+                  key={i}
+                  title={items.postTitle}
+                  image={items.postImage}
+                  category={items.postCategory}
+                  link={items.id}
+                  bgColor={handleColor}
+                />
+              );
+            })}
           </div>
         )}
 

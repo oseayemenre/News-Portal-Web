@@ -25,8 +25,6 @@ const Latestnews = () => {
 
   const { posts: data, loading } = usePosts();
 
-  console.log(data);
-
   return (
     <section
       className='px-[64px] py-[122px] text-white relative z-10'

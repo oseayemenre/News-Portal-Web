@@ -6,7 +6,7 @@ type TLatestNewsCard = {
   title: string;
   image: string;
   category: string;
-  bgColor: string;
+  bgColor: () => string;
 };
 
 const LatestNewsCard = ({
@@ -26,8 +26,8 @@ const LatestNewsCard = ({
     <Link href={link}>
       <div className='bg-[url("/card-image.png")] bg-cover h-[200px] p-3 relative rounded-md cursor-pointer hover:scale-90 duration-150 trnasition'>
         <div className='flex flex-start'>
-          <div className={`bg-${bgColor}-700 py-1 px-3 rounded-md`}>
-            <p className='text-white font-bold text-[12px] text-center'>
+          <div className={`bg-${bgColor()}-700 py-1 px-3 rounded-md`}>
+            <p className='text-white font-bold text-[12px] text-center '>
               {Category}
             </p>
           </div>

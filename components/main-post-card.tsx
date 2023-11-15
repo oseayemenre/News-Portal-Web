@@ -30,29 +30,36 @@ const MainPostCard = () => {
     handleFetch();
   }, []);
 
+  const handleColor = (): string => {
+    if (post[0] && post[0].postCategory) {
+      return "red";
+    } else if (post[0]?.postCategory === "Politics") {
+      return "blue";
+    }
+
+    return "green";
+  };
+
   const firstPostTitle = post.length > 0 ? post[0]?.postTitle : "";
   const removespace = firstPostTitle ? firstPostTitle.replace(/^\s+/, "") : "";
   const Title =
     removespace && removespace.length > 0
       ? removespace.charAt(0).toUpperCase() + removespace.slice(1)
       : "";
+  const firstCategory = post.length > 0 ? post[0].postCategory : "";
+  const category = firstCategory ? firstCategory.replace(/^\s+/, "") : "";
+  const Category = category
+    ? category.split("")[0].toUpperCase() + category.slice(1)
+    : "";
 
   return (
     <div>
       <Link href={post[0] && post[0].id ? post[0].id : ""}>
         <div className='bg-[url("/card-image.png")] bg-no-repeat bg-cover h-[300px] p-3 relative rounded-md cursor-pointer mb-20'>
           <div className='flex flex-start'>
-            <div
-              className={`bg-${String(
-                typeof post[0]?.bgColor === "undefined" ? "" : post[0]?.bgColor
-              )}-700 py-1 px-3 rounded-md`}
-            >
+            <div className={`bg-${handleColor()}-700 py-1 px-3 rounded-md`}>
               <p className='text-white font-bold text-[16px] text-center'>
-                {String(
-                  typeof post[0]?.postCategory === "undefined"
-                    ? ""
-                    : post[0]?.postCategory
-                )}
+                {Category}
               </p>
             </div>
           </div>
