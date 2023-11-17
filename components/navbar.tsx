@@ -77,7 +77,7 @@ const Navbar = () => {
       <div className='flex max-sm:hidden items-center'>
         {session?.user ? (
           <div className='flex gap-x-4 items-center'>
-            <p>Profile</p>
+            <Link href='/profile'>Profile</Link>
             <Button
               value='Sign Out'
               bgcolor={buttonitems.bgcolor}

@@ -25,7 +25,7 @@ const Mobilenav = () => {
       <React.Fragment>
         {session?.user ? (
           <div className='flex flex-col gap-y-3 items-end'>
-            <p>Profile</p>
+            <Link href='/profile'>Profile</Link>
             <Button
               value='Sign Out'
               bgcolor={buttonitems.bgcolor}
