@@ -1,3 +1,7 @@
+import { BiCategory } from "react-icons/bi";
+import { MdOutlinePostAdd, MdOutlinePages, MdDashboard } from "react-icons/md";
+import { FaComments } from "react-icons/fa6";
+
 export const navitems = [
   {
     label: "Home",
@@ -66,3 +70,36 @@ export const footer_bottom = [
 ] as const;
 
 export const colors = ["blue", "red", "purple", "green", "orange"] as const;
+
+export const dashboard_items = [
+  {
+    title: "Dashboard",
+    icon: MdDashboard,
+    path: "/profile",
+  },
+  {
+    title: "Category",
+    icon: BiCategory,
+    path: "/profile/category",
+  },
+  {
+    title: "Sub Category",
+    icon: BiCategory,
+    path: "/profile/sub_category",
+  },
+  {
+    title: "Posts (News)",
+    icon: MdOutlinePostAdd,
+    path: "/profile/posts",
+  },
+  {
+    title: "Pages",
+    icon: MdOutlinePages,
+    path: "/profile/pages",
+  },
+  {
+    title: "Comments",
+    icon: FaComments,
+    path: "/profile/comments",
+  },
+] as const;

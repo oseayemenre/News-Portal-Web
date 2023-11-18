@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Inter } from "next/font/google";
 import { useRouter } from "next/navigation";
@@ -14,12 +16,12 @@ const Logo = ({ textColor }: TLogo) => {
 
   return (
     <div
-      className='flex gap-4 cursor-pointer items-center text-[25px] font-[700] max-sm:text-[18px]'
+      className='flex gap-4 cursor-pointer items-center text-[20px] font-[700] max-sm:text-[18px]'
       onClick={() => router.push("/")}
     >
       <Logo_image />
       <p className={textColor ? `text-[${textColor}]` : `text-slate-200`}>
-        News Portal
+        News <span className='text-[#c8500b]'>Portal</span>
       </p>
     </div>
   );

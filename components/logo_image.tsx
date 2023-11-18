@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 const Logo_image = () => {
   return (
@@ -114,12 +113,7 @@ const Logo_image = () => {
             </g>
             <g>
               <g>
-                <motion.path
-                  initial={{ opacity: 0, pathLength: 0 }}
-                  animate={{ opacity: 1, pathLength: 1 }}
-                  transition={{
-                    duration: 2,
-                  }}
+                <path
                   className='st3'
                   d='M27,35v-2.4l-0.8-0.8c-0.5-0.5-1.3-0.5-1.8,0l-0.8,0.8l-1.9-1.9c-1-1-2.6-1-3.5,0L17,31.9V35H27z'
                 />
