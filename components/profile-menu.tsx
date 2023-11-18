@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 type TProfileMenu = {
   title: string;
@@ -13,8 +14,13 @@ type TProfileMenu = {
 };
 
 const ProfileMenu = ({ title, Icon, path, showArrow }: TProfileMenu) => {
+  const pathname = usePathname();
+  const [rotateArrow, setRotateArrow] = useState(false);
   return (
-    <motion.div whileTap={{ backgroundColor: "#788698" }}>
+    <motion.div
+      whileTap={{ backgroundColor: "#788698" }}
+      onClick={() => setRotateArrow(!rotateArrow)}
+    >
       <Link href={path}>
         <div className='flex justify-between px-6 py-3 items-center '>
           <div className='flex gap-x-6 items-center'>
@@ -22,7 +28,16 @@ const ProfileMenu = ({ title, Icon, path, showArrow }: TProfileMenu) => {
             <p>{title}</p>
           </div>
           {showArrow && (
-            <IoIosArrowForward size={14} className='flex justify-end' />
+            <IoIosArrowForward
+              size={14}
+              className={`flex justify-end ${
+                pathname === path && rotateArrow
+                  ? "rotate-90"
+                  : !rotateArrow
+                  ? "rotate-0"
+                  : ""
+              }`}
+            />
           )}
         </div>
       </Link>

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "./logo";
 import { useState } from "react";
 import { dashboard_items } from "@/utils/data";
@@ -10,8 +10,6 @@ import { usePathname } from "next/navigation";
 const Sidebar = () => {
   const pathname = usePathname();
   const [tapState, setTapState] = useState(false);
-
-  console.log(tapState);
 
   return (
     <div className='w-[20%] bg-[#36404e] h-screen'>
@@ -25,7 +23,6 @@ const Sidebar = () => {
 
         <div className='flex flex-col gap-y-1'>
           {dashboard_items.map((items, index) => {
-            pathname === items.path ? setTapState(true) : setTapState(false);
             return (
               <div
                 className={
