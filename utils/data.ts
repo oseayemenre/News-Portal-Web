@@ -81,25 +81,30 @@ export const dashboard_items = [
     title: "Category",
     icon: BiCategory,
     path: "/profile/category",
+    showArrow: true,
   },
   {
     title: "Sub Category",
     icon: BiCategory,
     path: "/profile/sub_category",
+    showArrow: true,
   },
   {
     title: "Posts (News)",
     icon: MdOutlinePostAdd,
     path: "/profile/posts",
+    showArrow: true,
   },
   {
     title: "Pages",
     icon: MdOutlinePages,
     path: "/profile/pages",
+    showArrow: true,
   },
   {
     title: "Comments",
     icon: FaComments,
     path: "/profile/comments",
+    showArrow: true,
   },
-] as const;
+];
