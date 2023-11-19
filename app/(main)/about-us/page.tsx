@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Aboutbullet from "@/components/aboutbullet";
 import { motion } from "framer-motion";
 import { titleVariant, loremVariant } from "@/utils/motion";

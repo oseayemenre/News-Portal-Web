@@ -15,7 +15,9 @@ type TProfileMenu = {
 
 const ProfileMenu = ({ title, Icon, path, showArrow }: TProfileMenu) => {
   const pathname = usePathname();
-  const [rotateArrow, setRotateArrow] = useState(false);
+  const [rotateArrow, setRotateArrow] = useState(true);
+
+  console.log(`${pathname} : ${rotateArrow}`);
   return (
     <motion.div
       whileTap={{ backgroundColor: "#788698" }}
@@ -30,7 +32,7 @@ const ProfileMenu = ({ title, Icon, path, showArrow }: TProfileMenu) => {
           {showArrow && (
             <IoIosArrowForward
               size={14}
-              className={`flex justify-end ${
+              className={`ease duration-150 ${
                 pathname === path && rotateArrow
                   ? "rotate-90"
                   : !rotateArrow

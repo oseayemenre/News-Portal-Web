@@ -1,15 +1,13 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import Logo from "./logo";
-import { useState } from "react";
 import { dashboard_items } from "@/utils/data";
 import ProfileMenu from "./profile-menu";
 import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const [tapState, setTapState] = useState(false);
 
   return (
     <div className='w-[20%] bg-[#36404e] h-screen'>
