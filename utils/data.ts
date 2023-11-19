@@ -86,32 +86,48 @@ export const dashboard_items = [
   {
     title: "Category",
     icon: BiCategory,
-    path: "/profile/category",
     showArrow: true,
+    dropdown: [
+      { title: "Add Category", link: "/profile/category/add" },
+      { title: "Manage Category", link: "/profile/category" },
+    ],
   },
   {
     title: "Sub Category",
     icon: BiCategory,
-    path: "/profile/sub_category",
     showArrow: true,
+    dropdown: [
+      { title: "Add Sub Category", link: "/profile/sub_category/add" },
+      { title: "Manage Sub Category", link: "/profile/sub_category" },
+    ],
   },
   {
     title: "Posts (News)",
     icon: MdOutlinePostAdd,
-    path: "/profile/posts",
     showArrow: true,
+    dropdown: [
+      { title: "Add Posts", link: "/profile/posts/add" },
+      { title: "Manage Posts", link: "/profile/posts" },
+      { title: "Trash Posts", link: "/profile/posts/delete" },
+    ],
   },
   {
     title: "Pages",
     icon: MdOutlinePages,
-    path: "/profile/pages",
     showArrow: true,
+    dropdown: [
+      { title: "About Us", link: "/profile/about" },
+      { title: "Contact Us", link: "/profile/contact" },
+    ],
   },
   {
     title: "Comments",
     icon: FaComments,
-    path: "/profile/comments",
     showArrow: true,
+    dropdown: [
+      { title: "Waiting for Approval", link: "/profile/comments/approval" },
+      { title: "Approved Comments", link: "/profile/comments" },
+    ],
   },
 ];
 

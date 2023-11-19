@@ -1,13 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Logo from "./logo";
 import { dashboard_items } from "@/utils/data";
 import ProfileMenu from "./profile-menu";
-import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
-  const pathname = usePathname();
+  const [active, setActive] = useState(0);
 
   return (
     <div className='w-[25%] bg-[#36404e] h-screen'>
@@ -22,19 +21,16 @@ const Sidebar = () => {
         <div className='flex flex-col gap-y-1'>
           {dashboard_items.map((items, index) => {
             return (
-              <div
-                className={
-                  pathname === items.path
-                    ? "bg-[#313A46] text-white"
-                    : "hover:text-white"
-                }
-                key={index}
-              >
+              <div className={active === index ? "text-white" : ""} key={index}>
                 <ProfileMenu
                   title={items.title}
                   Icon={items.icon}
                   path={items.path}
                   showArrow={items.showArrow}
+                  dropdown={items.dropdown}
+                  handleActive={() => setActive(index)}
+                  active={active}
+                  index={index}
                 />
               </div>
             );

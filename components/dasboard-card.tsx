@@ -21,7 +21,7 @@ const DashboardCard = ({ label, count, Icon, route }: TDashboardCard) => {
         <p className=' font-bold tracking-[0.04rem] text-[13px] mb-2'>
           {label}
         </p>
-        <p className='text-[30px] text-zinc-800'>{count}</p>
+        <p className='text-[30px] text-zinc-800 font-[700]'>{count}</p>
       </div>
       <Icon size={76} className='text-zinc-100 mt-8' />
     </div>
