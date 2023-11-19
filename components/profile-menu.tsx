@@ -17,7 +17,6 @@ const ProfileMenu = ({ title, Icon, path, showArrow }: TProfileMenu) => {
   const pathname = usePathname();
   const [rotateArrow, setRotateArrow] = useState(true);
 
-  console.log(`${pathname} : ${rotateArrow}`);
   return (
     <motion.div
       whileTap={{ backgroundColor: "#788698" }}

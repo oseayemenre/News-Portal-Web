@@ -10,7 +10,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className='w-[20%] bg-[#36404e] h-screen'>
+    <div className='w-[25%] bg-[#36404e] h-screen'>
       <div className='flex justify-center mb-2 py-6'>
         <Logo />
       </div>

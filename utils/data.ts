@@ -1,5 +1,11 @@
 import { BiCategory } from "react-icons/bi";
-import { MdOutlinePostAdd, MdOutlinePages, MdDashboard } from "react-icons/md";
+import {
+  MdOutlinePostAdd,
+  MdOutlinePages,
+  MdDashboard,
+  MdBarChart,
+  MdLayers,
+} from "react-icons/md";
 import { FaComments } from "react-icons/fa6";
 
 export const navitems = [
@@ -108,3 +114,30 @@ export const dashboard_items = [
     showArrow: true,
   },
 ];
+
+export const dashboard_card = [
+  {
+    label: "CATEGORIES LISTED",
+    count: 5,
+    icon: MdBarChart,
+    route: "/profile/category",
+  },
+  {
+    label: "LISTED SUBCATEGORIES",
+    count: 8,
+    icon: MdLayers,
+    route: "/profile/sub_category",
+  },
+  {
+    label: "LIVE NEWS",
+    count: 5,
+    icon: MdLayers,
+    route: "/profile/posts",
+  },
+  {
+    label: "TRASH NEWS",
+    count: 0,
+    icon: MdLayers,
+    route: "/profile/trash_posts",
+  },
+] as const;
