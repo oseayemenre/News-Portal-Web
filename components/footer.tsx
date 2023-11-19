@@ -60,7 +60,8 @@ const Footer = () => {
               className='w-3/4 p-3 max-sm:w-full focus:outline-none bg-[#e5e7eb] text-black rounded-md'
             />
             <Button
-              {...buttonitems}
+              value='Submit'
+              bgcolor='#c8500b'
               type='submit'
               submit={handleSubmit(onSubmit)}
             />

@@ -74,7 +74,8 @@ const Hero = () => {
             placeholder='Enter your email'
           />
           <Button
-            {...buttonitems}
+            value='Submit'
+            bgcolor='#c8500b'
             type='submit'
             submit={handleSubmit(onSubmit)}
           />
