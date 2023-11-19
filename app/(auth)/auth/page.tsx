@@ -8,7 +8,7 @@ import { BsTwitter } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
 import { signIn } from "next-auth/react";
-import * as z from "zod";
+import { z } from "zod";
 import { useRouter } from "next/navigation";
 
 const Login = () => {
