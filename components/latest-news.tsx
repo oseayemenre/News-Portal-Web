@@ -36,6 +36,7 @@ const Latestnews = () => {
           transition={{
             duration: 0.5,
           }}
+          viewport={{ once: true }}
           className='font-[600] mb-4'
         >
           Blog
@@ -43,6 +44,7 @@ const Latestnews = () => {
         <motion.h2
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{
             duration: 0.5,
             delay: 0.1,
@@ -55,6 +57,7 @@ const Latestnews = () => {
               variants={titleVariant}
               initial='initial'
               whileInView='animate'
+              viewport={{ once: true }}
               custom={index}
             >
               {letter}
@@ -64,6 +67,7 @@ const Latestnews = () => {
         <motion.p
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{
             duration: 0.5,
             delay: 0.2,
@@ -94,6 +98,7 @@ const Latestnews = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             transition={{
               duration: 0.5,
             }}
@@ -133,6 +138,7 @@ const Latestnews = () => {
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
         transition={{
           duration: 0.5,
         }}

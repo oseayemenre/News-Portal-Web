@@ -35,6 +35,7 @@ const Hero = () => {
           <motion.h2
             initial={{ y: 5, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
             transition={{
               delay: 0.6,
             }}
@@ -46,6 +47,7 @@ const Hero = () => {
           <motion.p
             initial={{ y: 5, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
             transition={{
               delay: 0.7,
             }}
@@ -58,6 +60,7 @@ const Hero = () => {
         <motion.form
           initial={{ y: 5, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
           transition={{
             delay: 0.8,
           }}
@@ -79,6 +82,7 @@ const Hero = () => {
         <motion.p
           initial={{ y: 5, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
           transition={{
             delay: 0.9,
           }}
@@ -92,6 +96,7 @@ const Hero = () => {
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
         transition={{
           delay: 1,
           type: "tween",

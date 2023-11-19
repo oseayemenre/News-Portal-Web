@@ -90,6 +90,7 @@ const LatestNews = () => {
             variants={titleVariant}
             initial='initial'
             whileInView='animate'
+            viewport={{ once: true }}
             custom={i}
           >
             {letter}

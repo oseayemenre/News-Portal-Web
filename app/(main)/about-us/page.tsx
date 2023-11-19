@@ -19,6 +19,7 @@ const About = () => {
             variants={titleVariant}
             initial='initial'
             whileInView='animate'
+            viewport={{ once: true }}
             custom={i}
           >
             {letter}
@@ -30,6 +31,7 @@ const About = () => {
         <motion.p
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
           transition={{
             duration: 0.5,
             type: "tween",
@@ -46,6 +48,7 @@ const About = () => {
               variants={loremVariant}
               initial='initial'
               whileInView='animate'
+              viewport={{ once: true }}
               custom={index}
               key={index}
               className='max-sm:text-center'

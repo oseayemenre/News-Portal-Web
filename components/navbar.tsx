@@ -22,6 +22,7 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: "-100px" }}
       animate={{ y: "0" }}
+      viewport={{ once: true }}
       transition={{
         duration: 0.4,
       }}
