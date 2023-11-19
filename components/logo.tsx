@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { Inter } from "next/font/google";
 import { useRouter } from "next/navigation";
 import Logo_image from "@/components/logo_image";

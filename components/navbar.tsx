@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Logo from "./logo";
 import { navitems, buttonitems } from "@/utils/data";
 import Button from "./button";

@@ -1,4 +1,4 @@
-import React from "react";
+import { Fragment } from "react";
 import { motion } from "framer-motion";
 import { navitems, buttonitems } from "@/utils/data";
 import Button from "./button";
@@ -22,7 +22,7 @@ const Mobilenav = () => {
         </Link>
       ))}
 
-      <React.Fragment>
+      <Fragment>
         {session?.user ? (
           <div className='flex flex-col gap-y-3 items-end'>
             <Link href='/profile'>Profile</Link>
@@ -36,7 +36,7 @@ const Mobilenav = () => {
         ) : (
           <Button {...buttonitems} />
         )}
-      </React.Fragment>
+      </Fragment>
     </motion.div>
   );
 };

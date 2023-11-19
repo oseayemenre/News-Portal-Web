@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Logo from "./logo";
 import Button from "./button";
 import { buttonitems } from "@/utils/data";

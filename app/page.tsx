@@ -1,6 +1,5 @@
 import Hero from "@/components/hero";
 import Latestnews from "@/components/latest-news";
-import React from "react";
 import Navbar from "@/components/navbar";
 import CTA from "@/components/cta";
 import Footer from "@/components/footer";

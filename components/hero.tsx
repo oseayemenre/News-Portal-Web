@@ -1,12 +1,11 @@
 "use client";
 
-import React from "react";
 import { buttonitems } from "@/utils/data";
 import Button from "./button";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const subscriberSchema = z.object({

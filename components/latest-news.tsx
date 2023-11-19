@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import NewsCard from "./news-card";
 import { motion } from "framer-motion";
 import { latest_card, titleVariant } from "@/utils/motion";
