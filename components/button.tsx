@@ -33,7 +33,7 @@ const Button = ({
         whileTap={{ scale: 0.8 }}
         className={`px-6 py-2 bg-[${bgcolor}] border-[2px] w-full border-solid ${
           border ? `border-[${border}]` : "border-transparent"
-        } rounded-md text-${textcolor} focus:outline-none`}
+        } rounded-md text-${textcolor} focus:outline-none cursor-pointer`}
       >
         {value}
       </motion.button>

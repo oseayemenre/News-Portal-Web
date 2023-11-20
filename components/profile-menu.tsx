@@ -60,7 +60,7 @@ const ProfileMenu = ({
             <IoIosArrowForward
               size={14}
               className={`ease duration-150 ${
-                rotateArrow ? "rotate-90" : "rotate-0"
+                rotateArrow && active === index ? "rotate-90" : "rotate-0"
               }`}
             />
           )}
@@ -69,10 +69,11 @@ const ProfileMenu = ({
 
       <div
         className={`mx-16 flex flex-col gap-y-3 text-[14px] duration-300 ease ${
-          rotateArrow ? "mt-3" : "mt-0"
+          rotateArrow && active === index ? "mt-3" : "mt-0"
         }`}
       >
         {rotateArrow &&
+          active === index &&
           dropdown?.map((items, i) => (
             <Link
               href={items.link}
