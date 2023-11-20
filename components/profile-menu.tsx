@@ -28,7 +28,6 @@ const ProfileMenu = ({
   active,
   index,
 }: TProfileMenu) => {
-  const pathname = usePathname();
   const [rotateArrow, setRotateArrow] = useState(false);
   const router = useRouter();
 
@@ -62,11 +61,7 @@ const ProfileMenu = ({
             <IoIosArrowForward
               size={14}
               className={`ease duration-150 ${
-                pathname === path && rotateArrow
-                  ? "rotate-90"
-                  : !rotateArrow
-                  ? "rotate-0"
-                  : ""
+                rotateArrow ? "rotate-90" : "rotate-0"
               }`}
             />
           )}

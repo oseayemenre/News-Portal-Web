@@ -8,8 +8,7 @@ import DashboardTitle from "@/components/dashboard-title";
 const Profile = () => {
   return (
     <main className='w-full'>
-      <DashboardTitle title='Dashboard' />
-      <div className='w-full h-[1px] bg-slate-100 mb-4' />
+      <DashboardTitle title='Dashboard' sub1='NewsPortal' sub2='Admin' />
       <div className='px-6 flex justify-between gap-x-4'>
         {dashboard_card.slice(0, 3).map((items, index) => (
           <DashboardCard
