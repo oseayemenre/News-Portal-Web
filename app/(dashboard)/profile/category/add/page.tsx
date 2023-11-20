@@ -6,7 +6,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { error } from "console";
 
 const formSchema = z.object({
   category: z.string().min(1),

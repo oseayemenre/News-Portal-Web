@@ -3,7 +3,10 @@ import React from "react";
 
 const Category = () => {
   return (
-    <DashboardTitle title='Manage Categories' sub1='Admin' sub2='Category' />
+    <main>
+      <DashboardTitle title='Manage Categories' sub1='Admin' sub2='Category' />
+      <button>Add</button>
+    </main>
   );
 };
 
